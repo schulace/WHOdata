@@ -18,17 +18,36 @@ http://apps.who.int/gho/athena/api/GHO/API_KEY_GOES_HERE
 from here, a .csv exension can be added to return a csv file, and/ or you can use a ? to specifiy filters, such as
 country (by a 3-letter code), year(4-digit integer), and sex (FMLE, MLE, BTSX).
 
+
+
+
 example input output interraction: (user input is in brackets)
 
 type in what you want information on. (ex. mortality, tobacco, infant, or something more specific
+
 user: 'infant'
+
 multiple variable objects match your query. please select from the following:
+
 1) Infant mortality;
+
+
 2) Number of infant deaths (thousands);
+
+
 3) Infant mortality rate (probability of dying between birth and age 1 per 1000 live births);
+
+
 4) Infant mortality rate (per 1000 live births);
+
+
 5) Infant mortality per 1 000 live births;
+
+
 6) Infants exclusively breastfed for the first six months of life (%);
 
+
+
 user: '5'
+
 EQ_INFANTMORT
