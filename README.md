@@ -23,7 +23,7 @@ country (by a 3-letter code), year(4-digit integer), and sex (FMLE, MLE, BTSX).
 
 example input output interraction: (user input is in brackets)
 
-type in what you want information on. (ex. mortality, tobacco, infant, or something more specific
+type in what you want information on. (ex. mortality, tobacco, infant, or something more specific)
 
 user: 'infant'
 

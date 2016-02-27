@@ -1,8 +1,10 @@
-def getMatches(userInput, varList):
+def getMatches(userInput, varList, firstTime):
     possibleMatches = {}
     possibleMatchkeys = []
     for key in varList:
         if userInput.lower() in key.lower():
+            if userInput.lower() == key.lower() and not firstTime:
+                return varList[key]
             possibleMatches[key] = varList[key]
             possibleMatchkeys.append(key)
     if len(possibleMatches) == 0:
@@ -10,7 +12,7 @@ def getMatches(userInput, varList):
     elif len(possibleMatches) == 1:
         return possibleMatches[userInput]
     else:
-        return getMatches(pickerDialogue(possibleMatchkeys), possibleMatches)
+        return getMatches(pickerDialogue(possibleMatchkeys), possibleMatches, False)
 
 
 def pickerDialogue(keyArrIn):

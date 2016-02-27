@@ -9,7 +9,7 @@ import fetcher
 def getJsonFromWho():
     res = requests.get("http://apps.who.int/gho/athena/api/GHO.json")
     if res.status_code == requests.codes.ok:
-        return res.text #really crappy error handling for something that could go so incredibly wrong. srry.
+        return res.text.lower() #really crappy error handling for something that could go so incredibly wrong. srry.
     else:
         print("unable to connect to http://apps.who.int/gho/athena/api/GHO.json, please check your connection")
 
