@@ -8,16 +8,16 @@ def getMatches(userInput, varList, firstTime):
             possibleMatches[key] = varList[key]
             possibleMatchkeys.append(key)
     if len(possibleMatches) == 0:
-        print("couldn't find any API variables matching your description")
-    elif len(possibleMatches) == 1:
-        return possibleMatches[userInput]
+        print("couldn't find any API variables or countries matching your description")
+    elif len(possibleMatches) == 1 and not firstTime:
+        return possibleMatches[possibleMatchkeys[0]]
     else:
         return getMatches(pickerDialogue(possibleMatchkeys), possibleMatches, False)
 
 
 def pickerDialogue(keyArrIn):
     print("multiple variable objects match your query. please select from the following:")
-    x = 1;
+    x = 1
     for key in keyArrIn:
         print(str(x) + ") " + key, end=";\n")
         x += 1
