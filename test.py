@@ -1,6 +1,5 @@
 import fetcher.variableFetcher
 import interpreter.responseSpecifier
-import fetcher.linkBuilder
 
 def getAPIvar():
     varDict = fetcher.variableFetcher.getAPIVariables() #grabs a dictionary of descriptions as keys, and API variables as values
@@ -16,5 +15,4 @@ def getCountryAbrev():
     print(answers)
     return answers
 
-
-print(fetcher.linkBuilder.createLink(getAPIvar(), getCountryAbrev()))
+print(fetcher.variableFetcher.get_real_variable_names())

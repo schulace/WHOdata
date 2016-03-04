@@ -2,6 +2,7 @@
 import requests  # fetches files from the internet
 import json  # reads json
 import bs4  # html file reader
+import numpy as np
 
 
 def get_file_from_net(linkIn):
@@ -19,6 +20,7 @@ def getAPIVariables():
     """
     wholeDataset = json.loads(get_file_from_net("http://apps.who.int/gho/athena/api/GHO.json"))
     apiVariableDict = {}
+
     assert isinstance(wholeDataset, object) # pycharm told me to put this in, idk why tho.
     for variableObject in wholeDataset['dimension'][0]['code']:
         # API has this weird thing called a dimension. idk, there's only 1
@@ -42,8 +44,29 @@ def get_real_variable_names():
     # listed on this site http://apps.who.int/gho/data/node.imr we can narrow it down to things that do work
     names_page = bs4.BeautifulSoup(get_file_from_net("http://apps.who.int/gho/data/node.imr"), "html.parser")#url of indicator list on WHO api website
     # I'm definitely doing this kind of inefficiently, but hey, it's my first stab at grabbing data from an HTML file
-    print(names_page.select('.list_dash'))
-    names_list = []
+    names_page_arr = names_page.select('.list_dash')
+    just_lists = ""
+    for i in names_page_arr:
+        just_lists += str(i)
+    list_items_soup = bs4.BeautifulSoup(just_lists, "html.parser")
+    list_items = list_items_soup.select('a')
+    final_arr = []
+    for x in list_items:
+        final_arr.append(get_string_between_chars(str(x), '(', '>'))
+    return final_arr
 
 
 
+def get_string_between_chars(stringIn, endChar, startChar):
+    start_val = 0
+    end_val = 0
+    for i in range(len(stringIn) -1, -1, -1):
+        if stringIn[i] == endChar:
+            end_val = i
+    trunc_input = stringIn[:end_val]
+    for i in range(len(trunc_input) -1):
+        if trunc_input[i] == startChar:
+            start_val = i
+
+    end_string = trunc_input[start_val +1:end_val]
+    return end_string.strip()
