@@ -18,4 +18,3 @@ def getCountryAbrev():
 
 
 print(fetcher.linkBuilder.createLink(getAPIvar(), getCountryAbrev()))
-
