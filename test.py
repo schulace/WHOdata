@@ -15,4 +15,4 @@ def getCountryAbrev():
     print(answers)
     return answers
 
-print(fetcher.variableFetcher.get_real_variable_names())
+getAPIvar()

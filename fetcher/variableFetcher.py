@@ -21,13 +21,14 @@ def getAPIVariables():
     wholeDataset = json.loads(get_file_from_net("http://apps.who.int/gho/athena/api/GHO.json"))
     apiVariableDict = {}
 
-    assert isinstance(wholeDataset, object) # pycharm told me to put this in, idk why tho.
+    assert isinstance(wholeDataset, object)  # pycharm told me to put this in, idk why tho.
+    real_variables = get_real_variable_names()
     for variableObject in wholeDataset['dimension'][0]['code']:
         # API has this weird thing called a dimension. idk, there's only 1
         # of them, so it's sorta pointless. All variables and their labels are stored inside an array called 'code'
         # in objects containing a 'label' (variable name you need to call to the API), a 'display' (tells you what it
         # actually does), and a few other things that I'm not really concerned with right now.
-        apiVariableDict[variableObject['display']] = variableObject['label']
+        apiVariableDict[variableObject['display']] = variableObject['label'].strip()
     return apiVariableDict
 
 
