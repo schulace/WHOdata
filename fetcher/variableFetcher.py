@@ -2,7 +2,6 @@
 import requests  # fetches files from the internet
 import json  # reads json
 import bs4  # html file reader
-import numpy as np
 
 
 def get_file_from_net(linkIn):

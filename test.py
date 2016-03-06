@@ -15,4 +15,6 @@ def getCountryAbrev():
     print(answers)
     return answers
 
-getAPIvar()
+
+
+print('http://apps.who.int/gho/athena/api/GHO/' + str(getAPIvar()) + ".csv") # + ".csv?filter=COUNTRY:" + str(countryAbrev)
