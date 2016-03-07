@@ -1,5 +1,6 @@
 import fetcher.variableFetcher
 import interpreter.responseSpecifier
+import csv_to_dataframe
 
 def getAPIvar():
     varDict = fetcher.variableFetcher.getAPIVariables() #grabs a dictionary of descriptions as keys, and API variables as values
@@ -17,4 +18,5 @@ def getCountryAbrev():
 
 
 
-print('http://apps.who.int/gho/athena/api/GHO/' + str(getAPIvar()) + ".csv") # + ".csv?filter=COUNTRY:" + str(countryAbrev)
+# print('http://apps.who.int/gho/athena/api/GHO/' + str(getAPIvar()) + ".csv") # + ".csv?filter=COUNTRY:" + str(countryAbrev
+getAPIvar()
