@@ -21,18 +21,21 @@ def get_csv_array(file_location):
 
 def sort_by_country(arr_in):
     notDone = True
+    counter = 0
     while notDone:
+        print(counter)
+        counter += 1
         notDone = False
         for x in range(len(arr_in)-1):
-            if not alphabetized(arr_in[x][0], arr_in[x+1][0], 0):
+            print(x)
+            if not alphabetized(arr_in[x][0].strip(), arr_in[x+1][0].strip(), 0):
                 arr_in[x], arr_in[x+1] = arr_in[x+1], arr_in[x]
                 notDone = True
     return arr_in
 
 
 def alphabetized(str1, str2, space_number):
-    print(str1 + ", " + str2)
-    if str == str2:
+    if str1 == str2:
         return True
     elif space_number > len(str1) and space_number < len(str2):
         return False
