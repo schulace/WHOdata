@@ -20,4 +20,4 @@ def get_country_abbreviation():
 
 
 # print('http://apps.who.int/gho/athena/api/GHO/' + str(getAPIvar()) + ".csv")
-csv_to_dataframe.get_csv_array('test_data.csv')
+print(csv_to_dataframe.sort_by_country(csv_to_dataframe.get_csv_array('test_data.csv')))
