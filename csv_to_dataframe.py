@@ -1,4 +1,5 @@
 import csv
+from pandas import DataFrame
 import pandas as pd
 import operator
 
@@ -7,44 +8,22 @@ def get_csv_array(file_location):
     fileIn = open(file_location)
     reader = csv.reader(fileIn)
     data_arr = list(reader)
+    print(data_arr)
     first_line = data_arr[0]
     year_loc = data_arr[0].index('YEAR')
     country_loc = data_arr[0].index('COUNTRY')
     value_loc = data_arr[0].index('Numeric')
     unsorted_data = []
-
+    print(data_arr[0][value_loc])
     for x in range(1, len(data_arr)):
-        unsorted_data.append([data_arr[x][country_loc], data_arr[x][year_loc], data_arr[x][value_loc]])
+        try:
+            unsorted_data.append({'Country':data_arr[x][country_loc], 'Year': int(data_arr[x][year_loc]), 'value': float(data_arr[x][value_loc])})
+        except:
+            print('no data for this nation / year, not putting into DataFrame')
     print(unsorted_data)
     return unsorted_data
 
 
-def sort_by_country(arr_in):
-    notDone = True
-    counter = 0
-    while notDone:
-        print(counter)
-        counter += 1
-        notDone = False
-        for x in range(len(arr_in)-1):
-            print(x)
-            if not alphabetized(arr_in[x][0].strip(), arr_in[x+1][0].strip(), 0):
-                arr_in[x], arr_in[x+1] = arr_in[x+1], arr_in[x]
-                notDone = True
-    return arr_in
-
-
-def alphabetized(str1, str2, space_number):
-    if str1 == str2:
-        return True
-    elif space_number > len(str1) and space_number < len(str2):
-        return False
-    elif space_number > len(str2) and space_number < len(str1):
-        return True
-    else:
-        if ord(str1[space_number]) < ord(str2[space_number]):
-            return True
-        elif ord(str1[space_number]) > ord(str2[space_number]):
-            return False
-        else:
-            return alphabetized(str1, str2, space_number + 1)
+def make_panda_data(arr_in):
+    df = pd.DataFrame(arr_in).sort_index()
+    return df
