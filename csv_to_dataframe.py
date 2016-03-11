@@ -17,7 +17,7 @@ def get_csv_array(file_location):
         try:
             unsorted_data.append([data_arr[x][country_loc],  int(data_arr[x][year_loc]), float(data_arr[x][value_loc])])
         except:
-           4 ==4  # uh. i don't know how to make it do nothing and still compile. here. check if 4 is still 4.
+           4 ==4  # pycharm: statement seems to have no effect. me: that's the idea.
     return unsorted_data
 
 
